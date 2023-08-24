@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+ <record model="ir.ui.view" id="hms_form_view">
+            <field name="name">tree patient</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+               <form>
+                                           <group>
+
+                     <group string = "basic info">
+                        <field name="name" required="True"/>
+                   <field name="l_name" required="True"/>
+
+
+                     <field name="email" />
+
+                   <field name="birth_date" attrs="{'invisible':[('age','>=',50)]}"/>
+
+
+                    <field name="states"/>
+
+                        </group>
+                  <group string = "basic info">
+                     <field name="age"/>
+
+                        <field name="department_id"/>
+                        <field name="doctors_id"/>
+                        </group>
+
+
+
+
+                     <group>
+                      <field name="cr_ratio" />
+                        <field name="pcr" />
+                         </group>
+
+
+
+
+
+
+
+
+                          <group>
+                     <field name="history_ids"/>
+
+                        </group>
+    <group>
+                     <field name="log_ids"/>
+
+                        </group>
+                        </group>
+
+
+               </form>
+            </field>
+        </record>
+
+ <record model="ir.ui.view" id="hms_tree_view">
+            <field name="name">tree patient</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+               <tree>
+                   <field name="name"/>
+                   <field name="l_name"/>
+                   <field name="birth_date"/>
+                   <field name="age"/>
+
+                        <field name="department_id"/>
+                        <field name="doctors_id"/>
+
+
+               </tree>
+            </field>
+        </record>
+
+
+<record id="action_patients" model="ir.actions.act_window">
+<field name="name">patients</field>
+<field name="res_model">hms.patient</field>
+<!--<field name="view_mode">tree,form</field>-->
+<!--<field name="context">{}</field>-->
+<!--<field name="help" type="html">-->
+<!--<p class="o_view_nocontent_smiling_face"> Create your first patient! </p>-->
+<!--</field>-->
+</record>
+
+<menuitem id="hms_root" name="hms" />
+<menuitem id="hms_patient_menu" name="patient" parent="hms_root" action="action_patients"  />
+
+</odoo>
